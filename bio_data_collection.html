@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bio Data Collection</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    #photo {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<h2>Bio Data Collection</h2>
+
+<form id="bioForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required>
+
+    <label for="age">Age:</label>
+    <input type="text" id="age" name="age" required>
+
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" name="gender" required>
+
+    <label for="photo">Photo:</label>
+    <input type="file" accept="image/*" capture="camera" id="photoInput" name="photo" required>
+    <img id="photo" src="#" alt="Your Photo" style="display:none;">
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    const form = document.getElementById('bioForm');
+    const photoInput = document.getElementById('photoInput');
+    const photo = document.getElementById('photo');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const formData = new FormData(form);
+        const fullName = formData.get('fullName');
+        const age = formData.get('age');
+        const gender = formData.get('gender');
+        const photoFile = formData.get('photo');
+
+        // For demonstration, log the collected data
+        console.log('Full Name:', fullName);
+        console.log('Age:', age);
+        console.log('Gender:', gender);
+        console.log('Photo:', photoFile);
+
+        // You can now send this data to your server using AJAX or any other method
+        
+        alert('Data collected successfully!');
+        // Reset the form
+        form.reset();
+        // Reset the photo preview
+        photo.src = '#';
+        photo.style.display = 'none';
+    });
+
+    photoInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                photo.src = e.target.result;
+                photo.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+</body>
+</html>
