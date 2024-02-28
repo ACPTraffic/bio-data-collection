@@ -3,100 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bio Data Collection</title>
+<title>Biodata Collector</title>
 <style>
     body {
         font-family: Arial, sans-serif;
         margin: 0;
+        padding: 0;
+    }
+    form {
+        max-width: 600px;
+        margin: 0 auto;
         padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
     }
-    label {
-        display: block;
-        margin-bottom: 10px;
-    }
-    input[type="text"] {
+    input[type="text"], input[type="email"], select, textarea {
         width: 100%;
-        padding: 8px;
-        margin-bottom: 20px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
         box-sizing: border-box;
     }
-    #photo {
-        width: 100%;
-        margin-bottom: 20px;
+    textarea {
+        height: 100px; /* Adjust height as needed */
     }
-    button {
+    input[type="submit"] {
+        width: 100%;
         background-color: #4CAF50;
         color: white;
-        padding: 10px 20px;
+        padding: 14px 20px;
+        margin: 8px 0;
         border: none;
         border-radius: 4px;
         cursor: pointer;
     }
-    button:hover {
+    input[type="submit"]:hover {
         background-color: #45a049;
+    }
+    @media screen and (max-width: 600px) {
+        form {
+            width: 90%;
+        }
     }
 </style>
 </head>
 <body>
 
-<h2>Bio Data Collection</h2>
+<form action="#" method="post">
+    <h2>Biodata Collector</h2>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
 
-<form id="bioForm">
-    <label for="fullName">Full Name:</label>
-    <input type="text" id="fullName" name="fullName" required>
+    <label for="gl_no">GL No:</label>
+    <input type="text" id="gl_no" name="gl_no" required>
+
+    <label for="designation">Designation:</label>
+    <select id="designation" name="designation" required>
+        <option value="CPO">CPO</option>
+        <option value="SCPO">SCPO</option>
+        <option value="ASI">ASI</option>
+        <option value="SI">SI</option>
+        <option value="CI">CI</option>
+    </select>
+
+    <label for="grade">Grade Designation:</label>
+    <select id="grade" name="grade" required>
+        <option value="SCPO(G)">SCPO(G)</option>
+        <option value="ASI(G)">ASI(G)</option>
+        <option value="SI(G)">SI(G)</option>
+    </select>
+
+    <label for="pen_no">PEN No:</label>
+    <input type="text" id="pen_no" name="pen_no" required>
+
+    <label for="father_name">Father's Name:</label>
+    <input type="text" id="father_name" name="father_name" required>
+
+    <label for="mother_name">Mother's Name:</label>
+    <input type="text" id="mother_name" name="mother_name" required>
+
+    <label for="sex">Sex:</label>
+    <select id="sex" name="sex" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label for="permanent">Permanent Address:</label>
+    <textarea id="permanent" name="permanent" required></textarea>
+
+    <label for="temporary">Temporary Address:</label>
+    <textarea id="temporary" name="temporary" required></textarea>
 
     <label for="age">Age:</label>
-    <input type="text" id="age" name="age" required>
+    <input type="text" id="age" name="age" pattern="[0-9]*" required>
 
-    <label for="gender">Gender:</label>
-    <input type="text" id="gender" name="gender" required>
+     <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+    </div>
 
-    <label for="photo">Photo:</label>
-    <input type="file" accept="image/*" capture="camera" id="photoInput" name="photo" required>
-    <img id="photo" src="#" alt="Your Photo" style="display:none;">
+    <div>    </div> <!-- Add space here -->
 
-    <button type="submit">Submit</button>
+    <div class="form-group">
+        <label for="date_of_entry">Date of Entry in Service:</label>
+        <input type="date" id="date_of_entry" name="date_of_entry" required>
+    </div>
+
+    <div class="form-group">
+        <label for="home_station">Home Station:</label>
+        <input type="text" id="home_station" name="home_station" required>
+    </div>
+
+    <label for="marital_status">Marital Status:</label>
+    <select id="marital_status" name="marital_status" required>
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+    </select>
+
+    <label for="spouse_station" id="spouse_station_label" style="display:none;">Spouse Station:</label>
+    <input type="text" id="spouse_station" name="spouse_station" style="display:none;">
+
+    <label for="religion">Religion & Cast:</label>
+    <input type="text" id="religion" name="religion" required>
+
+    <label for="last_postings">Detail of last 3 Posting:</label>
+    <textarea id="last_postings" name="last_postings" required></textarea>
+
+    <label for="blood_group">Blood Group:</label>
+    <select id="blood_group" name="blood_group" required>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+    </select>
+
+    <label for="pan_card">PAN Card No:</label>
+    <input type="text" id="pan_card" name="pan_card" required>
+
+    <label for="nationality">Nationality:</label>
+    <input type="text" id="nationality" name="nationality" required>
+
+    <label for="aadhar_card">Aadhar Card No:</label>
+    <input type="text" id="aadhar_card" name="aadhar_card" required>
+
+    <label for="election_id">Election ID Card No:</label>
+    <input type="text" id="election_id" name="election_id" required>
+
+    <label for="personal_mobile_no">Personal Mobile No:</label>
+    <input type="tel" id="personal_mobile_no" name="personal_mobile_no" pattern="[0-9]{10}" required>
+
+    <label for="cug_no">CUG No:</label>
+    <input type="tel" id="cug_no" name="cug_no" pattern="[0-9]{10}" required>
+
+    <label for="email">Email ID:</label>
+    <input type="email" id="email" name="email" required>
+ <div class="form-group">
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" capture="camera">
+    </div>
+
+    <input type="submit" value="Submit">
 </form>
 
 <script>
-    const form = document.getElementById('bioForm');
-    const photoInput = document.getElementById('photoInput');
-    const photo = document.getElementById('photo');
+    // Show spouse station field if marital status is married
+    document.getElementById('marital_status').addEventListener('change', function() {
+        var spouseStationLabel = document.getElementById('spouse_station_label');
+        var spouseStationInput = document.getElementById('spouse_station');
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const formData = new FormData(form);
-        const fullName = formData.get('fullName');
-        const age = formData.get('age');
-        const gender = formData.get('gender');
-        const photoFile = formData.get('photo');
-
-        // For demonstration, log the collected data
-        console.log('Full Name:', fullName);
-        console.log('Age:', age);
-        console.log('Gender:', gender);
-        console.log('Photo:', photoFile);
-
-        // You can now send this data to your server using AJAX or any other method
-        
-        alert('Data collected successfully!');
-        // Reset the form
-        form.reset();
-        // Reset the photo preview
-        photo.src = '#';
-        photo.style.display = 'none';
-    });
-
-    photoInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                photo.src = e.target.result;
-                photo.style.display = 'block';
-            }
-            reader.readAsDataURL(file);
+        if (this.value === 'Married') {
+            spouseStationLabel.style.display = 'block';
+            spouseStationInput.style.display = 'block';
+        } else {
+            spouseStationLabel.style.display = 'none';
+            spouseStationInput.style.display = 'none';
         }
     });
 </script>
