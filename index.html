@@ -186,6 +186,23 @@
             spouseStationInput.style.display = 'none';
         }
     });
+    // Display form data on the page
+    const formDataContainer = document.getElementById('formDataContainer');
+    formDataContainer.innerHTML = '<h2>Form Data:</h2>' + JSON.stringify(formDataObject, null, 2);
+    
+    // Store form data in local storage
+    localStorage.setItem('formData', JSON.stringify(formDataObject));
+    
+    // You can also send the form data to an external service using fetch API or XMLHttpRequest
+}
+
+// Add event listener to form submission
+const form = document.getElementById('biodataForm');
+form.addEventListener('submit', handleFormSubmission);
+</script>
+
+<!-- Container to display form data -->
+<div id="formDataContainer"></div>
 </script>
 
 </body>
