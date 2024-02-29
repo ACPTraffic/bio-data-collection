@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Page</title>
+</head>
+<body>
+    <h1>Form Submission Page</h1>
+    <div id="submission-results"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Access the form data on form submission
+            document.getElementById('myForm').addEventListener('submit', function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+                
+                // Access form data
+                var formData = new FormData(this);
+                
+                // Convert form data to JSON object
+                var jsonData = {};
+                formData.forEach(function(value, key) {
+                    jsonData[key] = value;
+                });
+
+                // Display form data
+                var resultsContainer = document.getElementById('submission-results');
+                resultsContainer.innerHTML = '<h2>Form Data:</h2>' + JSON.stringify(jsonData, null, 2);
+            });
+        });
+    </script>
+</body>
+</html>
